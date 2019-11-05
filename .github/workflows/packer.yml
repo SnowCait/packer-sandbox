@@ -4,6 +4,7 @@ on:
   push:
     paths: 
       - '*.json'
+      - 'bootstrap_win.txt'
       - '.github/workflows/packer.yml'
 
 jobs:
