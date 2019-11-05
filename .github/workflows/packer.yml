@@ -1,0 +1,17 @@
+name: Packer
+
+on:
+  push:
+    paths: 
+      - '*.json'
+      - '.github/workflows/packer.yml
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    container: docker://hashicorp/packer:1.4.3
+
+    steps:
+    - uses: actions/checkout@v1
+    - run: packer validate windows.json
