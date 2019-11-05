@@ -16,9 +16,15 @@
       "ami_name": "packer-sandbox {{timestamp}}",
       "user_data_file": "./bootstrap_win.txt",
       "communicator": "winrm",
-      "winrm_username": "Administrator",
-      "winrm_password": "SuperS3cr3t!!!!"
+      "winrm_username": "Administrator"
     }
   ],
-  "provisioners": []
+  "provisioners": [{
+    "_comment": "Sysprep",
+    "type": "powershell",
+    "inline": [
+      "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\InitializeInstance.ps1 -Schedule",
+      "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\SysprepInstance.ps1 -NoShutdown"
+    ]
+  }]
 }
