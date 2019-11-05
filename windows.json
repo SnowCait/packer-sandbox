@@ -8,7 +8,7 @@
           "root-device-type": "ebs"
         },
         "owners": [
-          "801119661308"
+          "amazon"
         ],
         "most_recent": true
       },
@@ -20,7 +20,6 @@
     }
   ],
   "provisioners": [{
-    "_comment": "Sysprep",
     "type": "powershell",
     "inline": [
       "C:\\ProgramData\\Amazon\\EC2-Windows\\Launch\\Scripts\\InitializeInstance.ps1 -Schedule",
