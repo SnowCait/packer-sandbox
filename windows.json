@@ -13,7 +13,7 @@
         "most_recent": true
       },
       "instance_type": "t2.micro",
-      "ami_name": "packer-sandbox {{isotime | clean_image_name}}",
+      "ami_name": "packer-sandbox {{timestamp}}",
       "user_data_file": "./bootstrap_win.txt",
       "communicator": "winrm",
       "winrm_username": "Administrator",
