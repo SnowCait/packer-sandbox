@@ -1,0 +1,27 @@
+name: Packer in directory
+
+on:
+  push:
+    paths: 
+      - 'packer/packer.json'
+      - '.github/workflows/packer-in-directory.yml'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: docker://hashicorp/packer:1.4.3
+      with:
+        args: validate packer.json
+      working-directory: packer/
+    - uses: docker://hashicorp/packer:1.4.3
+      with:
+        args:build packer.json
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_DEFAULT_REGION: ap-northeast-1
+      working-directory: packer/
